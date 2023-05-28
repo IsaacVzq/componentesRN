@@ -17,10 +17,10 @@ export const useAnimation = () => {
       easing: Easing.bounce,
     }).start();
   };
-  const fadeOut = () => {
+  const fadeOut = (duration: number = 300) => {
     Animated.timing(opacity, {
       toValue: 0,
-      duration: 300,
+      duration,
       useNativeDriver: true,
     }).start();
   };
