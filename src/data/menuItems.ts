@@ -51,4 +51,9 @@ export const menuItems: MenuItem[] = [
     icon: 'albums-outline',
     component: 'SlidesScreen',
   },
+  {
+    name: 'Cambiar Thema',
+    icon: 'flask-outline',
+    component: 'ChangeThemeScreen',
+  },
 ];

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -14,8 +14,12 @@ import {HeaderTitle} from '../components/HeaderTitle';
 import {styles} from '../theme/appTheme';
 import {useForm} from '../Hooks/useForm';
 import {CustomSwitch} from '../components/CustomSwitch';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 export const TextInputScreen = () => {
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   const {form, onChange, isSubribed} = useForm({
     name: '',
     email: '',
@@ -30,7 +34,11 @@ export const TextInputScreen = () => {
           <View style={styles.globalMargin}>
             <HeaderTitle title="TextInput" />
             <TextInput
-              style={stylesScreen.textInputStyle}
+              style={{
+                ...stylesScreen.textInputStyle,
+                backgroundColor: colors.text,
+                color: colors.primary,
+              }}
               placeholder="Ingrese su Nombre"
               autoCorrect={false}
               autoCapitalize="words"
@@ -39,7 +47,11 @@ export const TextInputScreen = () => {
               }}
             />
             <TextInput
-              style={stylesScreen.textInputStyle}
+              style={{
+                ...stylesScreen.textInputStyle,
+                backgroundColor: colors.text,
+                color: colors.primary,
+              }}
               placeholder="Ingrese su Email"
               autoCorrect={false}
               autoCapitalize="none"
@@ -49,7 +61,13 @@ export const TextInputScreen = () => {
               keyboardType="email-address"
             />
             <View style={stylesScreen.switchRow}>
-              <Text style={stylesScreen.switchText}>Subsribirse</Text>
+              <Text
+                style={{
+                  ...stylesScreen.switchText,
+                  color: colors.text,
+                }}>
+                Subsribirse
+              </Text>
               <CustomSwitch
                 isOn={isSubribed}
                 onChange={value => {
